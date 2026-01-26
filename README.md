@@ -1,46 +1,78 @@
-# Astro Starter Kit: Basics
+# me.mar1shell-Astro
 
-```sh
-npm create astro@latest -- --template basics
+> Migrating my portfolio from React to Astro. The original React version lives at https://github.com/mar1shell/me.mar1shell
+
+[![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01.svg)](https://astro.build)
+[![React](https://img.shields.io/badge/React-19.x-61DAFB.svg)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6.svg)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-Responsive-38B2AC.svg)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+## ✨ About
+
+Welcome to the Astro rewrite of my portfolio. Astro handles the overall site shell and routing, while React islands power interactive pieces.
+
+## Quick Start
+
+### Prerequisites
+
+- **Node.js** v18+ (Astro 5 target)
+- **npm**
+- Email sending uses EmailJS; create keys and place them in a `.env` file as needed.
+
+### Installation & Setup
+
+```bash
+git clone https://github.com/mar1shell/me.mar1shell-astro.git
+cd me.mar1shell-astro
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Highlights
 
-## 🚀 Project Structure
+- **Astro + React islands** for hydration only where needed
+- **Tailwind CSS** for styling with utility-first workflow
+- **AOS and motion** animations for scroll and micro-interactions
+- **EmailJS** integration for the contact form
+- **SEO-aware** metadata and performant by default
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Project Structure
 
-```text
-/
+```bash
+me.mar1shell-astro/
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+│   ├── images/
+│   └── site.webmanifest
+├── src/
+│   ├── assets/
+│   ├── components/   # Astro + React islands
+│   ├── pages/
+│   ├── sections/
+│   ├── hooks/
+│   ├── data/
+│   ├── styles/
+│   ├── types/
+│   └── utils/
+├── astro.config.mjs
+├── tsconfig.json
+└── README.md
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Live Demo
 
-## 🧞 Commands
+🔗 **[View Live Portfolio](https://mar1shell.me)**
 
-All commands are run from the root of the project, from a terminal:
+## Contributing
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Feedback and suggestions are welcome. Feel free to fork, branch, and open a PR.
 
-## 👀 Want to learn more?
+## License
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Licensed under the **MIT License** - see [LICENSE](LICENSE).
+
+---
+
+<div align="center">
+    <p>Made with ❤️ by <a href="https://github.com/mar1shell" style="font-style: italic; font-weight: bold">mar1shell</a></p>
+</div>
