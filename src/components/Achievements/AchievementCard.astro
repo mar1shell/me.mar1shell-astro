@@ -1,0 +1,79 @@
+---
+import type { AchievementCardProps } from "../../types";
+import { Trophy } from "lucide-react";
+
+const { achievement } = Astro.props as AchievementCardProps;
+const containerClasses =
+  "group relative flex flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg transition-all duration-300  hover:shadow-2xl dark:border-white/10 dark:bg-white/5 backdrop-blur-md h-full";
+---
+
+<a
+  href={achievement.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={containerClasses}
+  data-aos="fade-up"
+>
+  {/* Image Area - Dominant Feature */}
+  <div
+    class="relative h-64 w-full overflow-hidden bg-gray-100 dark:bg-black/40"
+  >
+    <img
+      src={achievement.image || "/images/placeholder-achievement.jpg"}
+      alt={achievement.title}
+      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+    />
+    {
+      /* Overlay gradient for text readability if needed, though text is below now */
+    }
+    <div
+      class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+    >
+    </div>
+
+    {/* Date Badge over Image */}
+    <div
+      class="absolute top-4 right-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-gray-900 shadow-md backdrop-blur-md dark:bg-black/60 dark:text-white"
+    >
+      {achievement.date}
+    </div>
+  </div>
+
+  {/* Caption Content Below */}
+  <div class="flex flex-1 flex-col p-6">
+    <div class="mb-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div
+          class="flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-100 text-yellow-600 dark:bg-yellow-500/20 dark:text-yellow-500"
+        >
+          {achievement.icon || <Trophy size={16} />}
+        </div>
+        {
+          achievement.rank && (
+            <span class="rounded-md bg-blue-100 px-2 py-1 text-xs font-bold text-blue-700 dark:bg-blue-900/30 dark:text-green-400">
+              {achievement.rank}
+            </span>
+          )
+        }
+      </div>
+    </div>
+
+    <h3
+      class="font-display mb-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-green-400"
+    >
+      {achievement.title}
+    </h3>
+
+    <p class="line-clamp-3 text-sm text-gray-600 dark:text-gray-400">
+      {achievement.description}
+    </p>
+
+    {
+      achievement.team && (
+        <p class="mt-4 text-xs font-medium text-gray-500 dark:text-gray-500">
+          Team: {achievement.team}
+        </p>
+      )
+    }
+  </div>
+</a>

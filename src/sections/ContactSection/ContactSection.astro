@@ -1,0 +1,11 @@
+---
+import SectionTitle from "../../components/SectionTitle/SectionTitle.astro";
+import ContactForm from "../../components/ContactForm/ContactForm";
+---
+
+<section class="px-4 py-6" id="contact-section">
+  {/* Section Header */}
+  <SectionTitle title="Contact Me" />
+  {/* Contact Form */}
+  <ContactForm client:only="react" />
+</section>

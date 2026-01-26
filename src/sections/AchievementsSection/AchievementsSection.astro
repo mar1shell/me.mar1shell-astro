@@ -1,0 +1,16 @@
+---
+import AchievementCard from "../../components/Achievements/AchievementCard.astro";
+import SectionTitle from "../../components/SectionTitle/SectionTitle.astro";
+import { achievements } from "../../data";
+---
+
+<section id="achievements" class="w-full py-20">
+  <SectionTitle title="Achievements" />
+  <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+      achievements.map((achievement) => (
+        <AchievementCard achievement={achievement} />
+      ))
+    }
+  </div>
+</section>

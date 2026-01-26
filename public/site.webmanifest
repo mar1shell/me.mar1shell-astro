@@ -1,0 +1,23 @@
+{
+  "name": "EL-HAMDAOUI MAROUANE | Portfolio",
+  "short_name": "M1 Portfolio",
+  "description": "Portfolio of Marouane El Hamdaoui, Full Stack Developer",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "orientation": "portrait-primary"
+}

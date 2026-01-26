@@ -1,0 +1,18 @@
+import { personalInfo } from "../../data";
+import { CalendarIcon } from "../../icons";
+
+function BookMeetingButton() {
+  return (
+    <a
+      href={personalInfo.calcom}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-blue-500 px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 dark:bg-green-500 dark:hover:bg-green-600 dark:hover:shadow-green-500/25"
+    >
+      <CalendarIcon />
+      Book a Meeting
+    </a>
+  );
+}
+
+export default BookMeetingButton;

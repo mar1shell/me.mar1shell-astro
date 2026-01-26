@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar/NavBar";
+import AnimatedBackground from "../components/AnimatedBackground/AnimatedBackground";
+import HeroSection from "../sections/HeroSection/HeroSection.astro";
+import AboutMeSection from "../sections/AboutMeSection/AboutMeSection.astro";
+import AchievementsSection from "../sections/AchievementsSection/AchievementsSection.astro";
+import ProjectsSection from "../sections/ProjectsSection/ProjectsSection.astro";
+import ExperienceSection from "../sections/ExperienceSection/ExperienceSection.astro";
+import ContactSection from "../sections/ContactSection/ContactSection.astro";
+import Footer from "../components/Footer/Footer.astro";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import SmoothFollower from "../components/SmoothFollower/SmoothFolllower";
+---
+
+<Layout>
+  <div class="overflow-x-hidden font-sans transition-colors duration-500">
+    <AnimatedBackground client:load />
+    <NavBar client:idle />
+    <main
+      class="container mx-auto flex flex-col items-center justify-center px-5"
+    >
+      <HeroSection />
+      <AboutMeSection />
+      <AchievementsSection />
+      <ProjectsSection />
+      <ExperienceSection />
+      <ContactSection />
+      <Footer />
+      <ScrollToTop />
+    </main>
+    <SmoothFollower client:only="react" />
+  </div>
+</Layout>

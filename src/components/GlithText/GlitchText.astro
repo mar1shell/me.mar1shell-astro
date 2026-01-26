@@ -1,0 +1,16 @@
+---
+import "./GlitchText.css";
+
+interface GlitchTextProps {
+  text: string;
+  customClass?: string;
+}
+
+const { text, customClass = "" } = Astro.props as GlitchTextProps;
+---
+
+<div class={`glitch-wrapper ${customClass}`}>
+  <div class="glitch" data-text={text}>
+    {text}
+  </div>
+</div>

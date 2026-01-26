@@ -1,0 +1,16 @@
+---
+import { experiences } from "../../data";
+import SectionTitle from "../../components/SectionTitle/SectionTitle.astro";
+import ExperienceCard from "../../components/ExperienceCard/ExperienceCard";
+---
+
+<section id="experience-section" class="max-w-5xl px-4 py-6">
+  <SectionTitle title="Experience" delay={500} />
+  <div class="grid gap-16">
+    {
+      experiences.map((exp, index) => (
+        <ExperienceCard experience={exp} index={index} client:only="react" />
+      ))
+    }
+  </div>
+</section>

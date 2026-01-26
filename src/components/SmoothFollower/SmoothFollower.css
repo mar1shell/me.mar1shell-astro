@@ -1,0 +1,5 @@
+@media (pointer: fine) {
+    .smooth-follower:hover {
+        display: none;
+    }
+}

@@ -1,0 +1,157 @@
+---
+import "../styles/index.css";
+import "aos/dist/aos.css";
+---
+
+<!doctype html>
+<html lang="en-MA">
+  <head>
+    <!--React scan-->
+    <!-- <script
+      crossorigin="anonymous"
+      src="//unpkg.com/react-scan/dist/auto.global.js"
+    ></script> -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QRTYJR377"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-1QRTYJR377");
+    </script>
+    <!-- end Google tag (gtag.js) -->
+
+    <!-- Important Meta Tags -->
+    <title>EL-HAMDAOUI MAROUANE | Software Engineering Student</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="Portfolio of EL-HAMDAOUI MAROUANE, showcasing projects and skills in software engineering and fullstack development."
+    />
+    <meta
+      name="keywords"
+      content="el-hamdaoui marouane, portfolio , mar1shell, projects, skills, web development, software engineering, fullstack development"
+    />
+    <meta name="author" content="EL-HAMDAOUI MAROUANE" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="canonical" content="https://marouane.net" />
+    <!-- Important Meta Tags -->
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- favicons -->
+
+    <!-- OG Tags -->
+    <meta
+      property="og:title"
+      content="EL-HAMDAOUI MAROUANE | Software Engineering Student"
+    />
+    <meta
+      property="og:site_name"
+      content="EL-HAMDAOUI MAROUANE | Software Engineering Student"
+    />
+    <meta
+      property="og:description"
+      content="Explore the portfolio of EL-HAMDAOUI MAROUANE, featuring a collection of projects and skills in software development."
+    />
+    <meta
+      property="og:image"
+      content="https://www.mar1shell.me/images/avatar.webp"
+    />
+    <meta property="og:url" content="https://marouane.net" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_MA" />
+    <meta property="og:see_also" content="https://github.com/mar1shell" />
+    <meta
+      property="og:see_also"
+      content="https://linkedin.com/in/elhamdaouimarouane/"
+    />
+    <meta property="og:see_also" content="https://x.com/mar1shell" />
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="EL-HAMDAOUI MAROUANE | Software Engineering Student "
+    />
+    <meta
+      name="twitter:description"
+      content="Explore the portfolio of EL-HAMDAOUI MAROUANE, featuring a collection of projects and skills in software development."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.marouane.net/images/avatar.webp"
+    />
+    <meta name="twitter:url" content="https://marouane.net" />
+    <!-- OG Tags -->
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..700&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font -->
+
+    <!-- avatar image preloaded for better performance -->
+
+    <link
+      rel="preload"
+      as="image"
+      href="/images/avatar.webp"
+      type="image/webp"
+    />
+    <!-- Preload Image -->
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "EL-HAMDAOUI MAROUANE",
+        "url": "https://marouane.net",
+        "description": "Portfolio of EL-HAMDAOUI MAROUANE, showcasing projects and skills in software engineering and fullstack development.",
+        "sameAs": [
+          "https://github.com/mar1shell",
+          "https://linkedin.com/in/elhamdaouimarouane/",
+          "https://x.com/mar1shell"
+        ],
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://www.marouane.net/images/avatar.webp"
+        }
+      }
+    </script>
+    <!-- JSON-LD -->
+  </head>
+  <body>
+    <slot />
+  </body>
+  <script>
+    import AOS from "aos";
+
+    const isLightMode = localStorage.getItem("dark-theme") === "false";
+
+    if (!isLightMode) {
+      document.documentElement.classList.add("dark");
+    }
+
+    AOS.init({
+      duration: 600,
+      easing: "ease-out",
+      once: true, // Only animate once
+      mirror: false, // Don't animate on scroll back
+      throttleDelay: 100, // Throttle scroll events
+      debounceDelay: 50, // Debounce resize events
+    });
+  </script>
+</html>
