@@ -12,6 +12,7 @@ import Footer from "../components/Footer/Footer.astro";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import SmoothFollower from "../components/SmoothFollower/SmoothFolllower";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import Analytics from "@vercel/analytics/astro";
 ---
 
 <Layout>
@@ -33,4 +34,5 @@ import SpeedInsights from "@vercel/speed-insights/astro";
     <SmoothFollower client:only="react" />
   </div>
   <SpeedInsights />
+  <Analytics />
 </Layout>
