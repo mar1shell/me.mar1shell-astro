@@ -11,6 +11,7 @@ import ContactSection from "../sections/ContactSection/ContactSection.astro";
 import Footer from "../components/Footer/Footer.astro";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import SmoothFollower from "../components/SmoothFollower/SmoothFolllower";
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <Layout>
@@ -31,4 +32,5 @@ import SmoothFollower from "../components/SmoothFollower/SmoothFolllower";
     </main>
     <SmoothFollower client:only="react" />
   </div>
+  <SpeedInsights />
 </Layout>
