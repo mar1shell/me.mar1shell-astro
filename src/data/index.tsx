@@ -38,23 +38,6 @@ const personalInfo = {
 
 // Hero Section
 
-const heroCaptions: HeroCaption[] = [
-  {
-    content: "🌍 Based in Casablanca, Morocco",
-  },
-  {
-    content:
-      "💻 Passionate about crafting impactful full-stack web applications",
-  },
-  {
-    content: "💼 AI Trainer at Outlier AI and enthusiastic software builder",
-  },
-  {
-    content:
-      "📚 Exploring software engineering deeply through projects and study",
-  },
-];
-
 export const typewriterText = [
   "a Software Engineer",
   "a Fullstack Developer",
@@ -189,12 +172,6 @@ const SocialMediaIcons: SocialMediaIconProps[] = [
 ];
 
 // About me section
-
-const terminalData: TerminalData = {
-  username: personalInfo.username,
-  command: "cat aboutmar1.txt",
-  bio: "Hey! I'm Marouane, a Computer Science & AI student at ENSAM Casablanca. I love solving LeetCode problems, building fullstack apps, and walking the streets of Casablanca with a playlist full of diverse music. I’m passionate about software engineering, currently diving into backend fundamentals and crafting clean, meaningful code. I also enjoy volunteering, reading the news, and dreaming big. Hire me before I join the Night’s Watch. 😉",
-};
 
 const aboutMeData = {
   description: (
@@ -480,8 +457,6 @@ const stats = [
 ];
 
 export {
-  heroCaptions,
-  terminalData,
   aboutMeData,
   projects,
   experiences,
