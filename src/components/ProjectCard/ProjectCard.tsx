@@ -10,6 +10,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       <div
         className={`relative mb-8 lg:mb-0 ${index % 2 === 1 ? "lg:order-2" : "lg:order-1"}`}
         data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+        suppressHydrationWarning
       >
         <div className="relative transition-transform duration-500 group-hover:scale-105">
           <a
@@ -71,6 +72,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       <div
         className={`space-y-6 ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"}`}
         data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
+        suppressHydrationWarning
       >
         {/* Project Tags */}
         <div className="flex items-center justify-center gap-2">
