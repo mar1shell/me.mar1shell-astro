@@ -4,7 +4,7 @@ import BentoItem from "../BenToItem/BentoItem.tsx";
 function BenToGrid() {
   const { description, techStack, interests } = aboutMeData;
   return (
-    <div className="grid h-full grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2">
+    <div className="grid h-full grid-cols-1 gap-4 md:grid-rows-2 lg:grid-cols-3">
       {/* 1. Bio (Large) */}
       <BentoItem
         customClass="flex flex-col items-center justify-center md:col-span-2 md:row-span-2"

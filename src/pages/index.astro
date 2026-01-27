@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar/NavBar";
-import AnimatedBackground from "../components/AnimatedBackground/AnimatedBackground";
+import AnimatedBackground from "../components/AnimatedBackground/AnimatedBackground.astro";
 import HeroSection from "../sections/HeroSection/HeroSection.astro";
 import AboutMeSection from "../sections/AboutMeSection/AboutMeSection.astro";
 import AchievementsSection from "../sections/AchievementsSection/AchievementsSection.astro";
@@ -17,7 +17,7 @@ import Analytics from "@vercel/analytics/astro";
 
 <Layout>
   <div class="overflow-x-hidden font-sans transition-colors duration-500">
-    <AnimatedBackground client:load />
+    <AnimatedBackground />
     <NavBar client:idle />
     <main
       class="container mx-auto flex flex-col items-center justify-center px-5"

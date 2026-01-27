@@ -1,0 +1,149 @@
+---
+// AnimatedBackground.astro - Pure Astro implementation
+---
+
+<div
+  class="fixed inset-0 -z-10 bg-gray-50 transition-colors duration-500 dark:bg-gray-950"
+>
+  <canvas id="stars-canvas" class="absolute inset-0"></canvas>
+  <div
+    class="pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/50 dark:to-black/50"
+  >
+  </div>
+</div>
+
+<script>
+  // This script runs once when the component mounts
+  const canvas = document.getElementById("stars-canvas") as HTMLCanvasElement;
+  if (!canvas) throw new Error("Canvas not found");
+
+  const ctx = canvas.getContext("2d", {
+    alpha: true,
+    // Performance hints
+    desynchronized: true, // Reduces latency
+    willReadFrequently: false,
+  });
+
+  if (!ctx) throw new Error("Could not get 2D context");
+
+  // Config
+  const starCount = 200;
+  const speed = 4;
+  const colors = ["#6b7280", "#9ca3af", "#4b5563", "#d1d5db", "#374151"];
+
+  // Use a single typed array for better performance
+  interface Star {
+    x: number;
+    y: number;
+    z: number;
+    colorIndex: number;
+  }
+
+  let stars: Star[] = [];
+  let animationFrameId: number;
+  let isRunning = false;
+
+  const initStars = () => {
+    stars = [];
+    const w = canvas.width;
+    const h = canvas.height;
+
+    for (let i = 0; i < starCount; i++) {
+      stars.push({
+        x: (Math.random() - 0.5) * w * 2,
+        y: (Math.random() - 0.5) * h * 2,
+        z: Math.random() * w,
+        colorIndex: Math.floor(Math.random() * colors.length),
+      });
+    }
+  };
+
+  const resizeCanvas = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initStars();
+  };
+
+  // Use a single color string array for better cache performance
+  const draw = () => {
+    if (!isRunning) return;
+
+    // Clear canvas efficiently
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const w = canvas.width;
+
+    // Batch drawing operations for better performance
+    for (let i = 0; i < stars.length; i++) {
+      const star = stars[i];
+
+      // Update star position
+      star.z -= speed;
+
+      // Reset star if it's passed the camera
+      if (star.z <= 0) {
+        star.x = (Math.random() - 0.5) * w * 2;
+        star.y = (Math.random() - 0.5) * w * 2;
+        star.z = w;
+        star.colorIndex = Math.floor(Math.random() * colors.length);
+      }
+
+      // Project to 2D
+      const x = (star.x / star.z) * 100 + cx;
+      const y = (star.y / star.z) * 100 + cy;
+
+      // Skip if out of bounds (optimization)
+      if (x < -10 || x > w + 10 || y < -10 || y > canvas.height + 10) continue;
+
+      const radius = (1 - star.z / w) * 3;
+
+      // Skip tiny stars (optimization)
+      if (radius < 0.1) continue;
+
+      // Draw star
+      ctx.fillStyle = colors[star.colorIndex];
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    animationFrameId = requestAnimationFrame(draw);
+  };
+
+  // Initialize
+  resizeCanvas();
+  isRunning = true;
+  draw();
+
+  // Handle resize with debouncing for better performance
+  let resizeTimeout: number;
+  const handleResize = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = window.setTimeout(resizeCanvas, 150);
+  };
+
+  window.addEventListener("resize", handleResize, { passive: true });
+
+  // Pause animation when tab is not visible (major performance boost)
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      isRunning = false;
+      cancelAnimationFrame(animationFrameId);
+    } else {
+      isRunning = true;
+      draw();
+    }
+  };
+
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+
+  // Cleanup on navigation (Astro view transitions)
+  document.addEventListener("astro:before-preparation", () => {
+    isRunning = false;
+    cancelAnimationFrame(animationFrameId);
+    window.removeEventListener("resize", handleResize);
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+  });
+</script>
