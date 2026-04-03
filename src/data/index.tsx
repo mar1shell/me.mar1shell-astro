@@ -1,7 +1,5 @@
 import type {
   SocialLink,
-  HeroCaption,
-  TerminalData,
   Project,
   Experience,
   SocialMediaIconProps,
