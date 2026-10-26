@@ -113,12 +113,40 @@
   border-color: #4e623b;
 }
 .award-entry {
+  position: relative;
   display: grid;
   grid-template-columns: 90px 160px 1fr 42px;
   align-items: center;
   gap: 30px;
   border-top: 1px solid var(--color-line);
   padding-block: 28px;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease;
+}
+.award-entry:has(.award-card-link):hover,
+.award-entry:focus-within {
+  background: #1b2615;
+  border-top-color: #7e9d60;
+}
+.award-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.award-card-link:focus-visible {
+  outline: none;
+}
+.award-card-link:focus-visible::after {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+.award-entry:hover .award-link,
+.award-entry:focus-within .award-link {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
 }
 .award-position {
   align-self: start;
@@ -170,41 +198,6 @@
 .award-link:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
-}
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-block: 1px solid var(--color-line);
-}
-.skill-group {
-  padding: 30px 32px;
-}
-.skill-group:first-child {
-  padding-left: 0;
-}
-.skill-group:last-child {
-  padding-right: 0;
-}
-.skill-group + .skill-group {
-  border-left: 1px solid var(--color-line);
-}
-.skill-group > .mono {
-  font-size: 10px;
-}
-.skill-group h3 {
-  font-size: 24px;
-  margin-block: 24px 12px;
-}
-.skill-group > .muted {
-  font-size: 12px;
-}
-.skill-group ul {
-  display: flex;
-  gap: 10px 18px;
-  flex-wrap: wrap;
-  margin-top: 28px;
-  font: 12px/1.8 var(--font-mono);
-  color: #d1d9c8;
 }
 .contact-section {
   padding-bottom: 90px;
@@ -380,24 +373,6 @@
   }
   .award-position span {
     font-size: 8px;
-  }
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-  .skill-group,
-  .skill-group:first-child,
-  .skill-group:last-child {
-    padding: 28px 0;
-  }
-  .skill-group + .skill-group {
-    border-left: 0;
-    border-top: 1px solid var(--color-line);
-  }
-  .skill-group h3 {
-    margin-top: 15px;
-  }
-  .skill-group ul {
-    margin-top: 20px;
   }
   .contact-grid {
     grid-template-columns: 1fr;

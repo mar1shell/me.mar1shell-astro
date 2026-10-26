@@ -61,7 +61,7 @@ Copy an existing object in `src/data/projects.ts`, or use:
 }
 ```
 
-Use `links: []` for a project without a public link. Screenshots are optional: a typography preview appears when there is no image. To show a small process diagram instead, add `preview: { label: "Workflow", steps: ["Input", "Process", "Output"], caption: "Optional caption" }`.
+The first item in `links` is the destination for clicking anywhere on the project card. The “Behind the build” disclosure and individual links remain independently usable. Use `links: []` for a project without a public link; clicking that card expands its description instead. Screenshots are optional: a typography preview appears when there is no image. To show a small process diagram instead, add `preview: { label: "Workflow", steps: ["Input", "Process", "Output"], caption: "Optional caption" }`.
 
 ### Add education or a community role
 
@@ -83,7 +83,7 @@ Use `links: []` for a project without a public link. Screenshots are optional: a
 }
 ```
 
-Logos use `object-fit: contain` so rectangular and square marks both fit. A two-letter fallback appears if you omit `logo`. The original Outlier, ONEE, and ENSAM logos are already connected to their entries.
+Logos use `object-fit: contain` so rectangular and square marks both fit. Logos sit in the side column next to each experience or degree, including on phones. A two-letter fallback appears if you omit `logo`. The original Outlier, ONEE, and ENSAM logos are already connected to their entries.
 
 ### Add a leadership story with three photos
 
@@ -141,6 +141,8 @@ To reorder sections, move their component lines inside `src/pages/index.astro`. 
 | `src/layouts/Layout.astro`       | HTML shell, fonts, metadata, and structured data               |
 
 Organization marks live in `src/components/OrganizationMark/`. Leadership stories use `src/components/LeadershipStories/` and the reusable React `src/components/PhotoTriptych/` gallery; their styles live in `src/styles/leadership.css`.
+
+Social button icons live in `src/components/ui/SocialIcon.astro`; GitHub, LinkedIn, and X are selected by the social link label. Project cards live in `src/components/ProjectCard/`, and each achievement row links to its configured `link`. The toolkit uses larger skill tiles styled in `src/styles/toolkit.css`.
 
 Hero layout styles live in `src/styles/hero.css`, animation styles in `src/styles/motion.css`, and scroll/pointer behavior in `src/scripts/motion.ts`. Add `data-reveal` to a static Astro element to give it a one-time reveal as it enters view. Keep this attribute on a stable wrapper around React islands.
 

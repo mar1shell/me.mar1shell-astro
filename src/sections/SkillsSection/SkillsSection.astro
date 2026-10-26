@@ -5,20 +5,25 @@ import SectionHeading from "../../components/ui/SectionHeading.astro";
 ---
 
 <section id="skills" class="section" aria-labelledby="skills-title">
-  <SectionHeading section={sections.skills} /><div
-    class="skills-grid"
-    data-reveal
-  >
+  <SectionHeading section={sections.skills} />
+  <div class="toolkit-list">
     {
       skillGroups.map((group, index) => (
-        <article class="skill-group">
+        <article class="toolkit-row" data-reveal>
           <>
-            <span class="mono accent">0{index + 1} /</span>
-            <h3>{group.title}</h3>
-            <p class="muted">{group.description}</p>
-            <ul>
+            <div class="toolkit-label">
+              <>
+                <span class="toolkit-number mono">0{index + 1}</span>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+              </>
+            </div>
+            <ul class="skill-tiles" aria-label={group.title}>
               {group.items.map((item) => (
-                <li>{item}</li>
+                <li>
+                  <span aria-hidden="true" />
+                  {item}
+                </li>
               ))}
             </ul>
           </>

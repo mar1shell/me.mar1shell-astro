@@ -1,0 +1,90 @@
+/* Larger skills in clear category rows; no invented proficiency scores. */
+.toolkit-list {
+  display: grid;
+  gap: 16px;
+}
+.toolkit-row {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.8fr) minmax(0, 2fr);
+  align-items: center;
+  gap: 40px;
+  padding: 28px;
+  background: #1b2317;
+  border: 1px solid #3e5030;
+}
+.toolkit-label {
+  position: relative;
+  padding-left: 44px;
+}
+.toolkit-number {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: var(--color-accent);
+  font-size: 17px;
+}
+.toolkit-label h3 {
+  font-size: 25px;
+  line-height: 1.2;
+}
+.toolkit-label p {
+  font-size: 12px;
+  color: #b8c5ab;
+  margin-top: 11px;
+}
+.skill-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.skill-tiles li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 12px 14px;
+  border: 1px solid #536a3f;
+  border-radius: 3px;
+  color: #f3f8ec;
+  background: #29371f;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 550;
+}
+.skill-tiles li > span {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+}
+@media (max-width: 1000px) {
+  .toolkit-row {
+    grid-template-columns: minmax(170px, 0.8fr) minmax(0, 1.8fr);
+    gap: 24px;
+    padding: 24px;
+  }
+  .skill-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .toolkit-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px;
+  }
+  .toolkit-label h3 {
+    font-size: 24px;
+  }
+  .skill-tiles li {
+    font-size: 14px;
+    padding: 11px;
+    gap: 8px;
+    min-height: 50px;
+  }
+}
+@media (max-width: 360px) {
+  .skill-tiles {
+    grid-template-columns: 1fr;
+  }
+}

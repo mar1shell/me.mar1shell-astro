@@ -65,6 +65,7 @@ export function initializeMotion() {
     });
   };
   if (
+    hero?.querySelector(".network-field") &&
     motion.interactiveBackground &&
     window.matchMedia("(hover: hover) and (pointer: fine)").matches
   ) {

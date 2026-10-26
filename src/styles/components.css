@@ -183,6 +183,66 @@
 }
 .project-card {
   min-width: 0;
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+.project-card:hover,
+.project-card:focus-within {
+  border-color: #87b45b;
+  box-shadow: 0 12px 35px #0004;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .project-card:hover {
+    transform: translateY(-4px);
+  }
+}
+.project-card-action {
+  position: static;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+}
+.project-card-action::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+.project-card-action:focus-visible {
+  outline: none;
+}
+.project-card-action:focus-visible::after {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+.project-open-icon {
+  position: absolute;
+  right: 14px;
+  top: 13px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--color-accent);
+  background: #182410;
+  border: 1px solid #6f9250;
+  border-radius: 50%;
+  font-size: 21px;
+  pointer-events: none;
+}
+.project-card:hover .project-open-icon {
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 .project-featured {
   grid-column: 1 / -1;
@@ -217,7 +277,7 @@
   border: 1px solid #5c68544a;
 }
 .project-card:hover .project-visual > img {
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.025);
   filter: saturate(1);
 }
 .project-index {
@@ -240,7 +300,7 @@
   border: 1px solid #526740;
 }
 .project-copy {
-  padding: 25px 0 0;
+  padding: 24px;
 }
 .project-category {
   color: var(--color-muted);
@@ -268,15 +328,30 @@
 }
 .project-details {
   margin-block: 17px 20px;
+  position: relative;
+  z-index: 2;
 }
 .project-details summary {
   font-size: 12px;
-  color: var(--color-muted);
+  color: #e1ebd7;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  padding-block: 8px;
+  align-items: center;
+  min-height: 44px;
+  gap: 18px;
+  padding-block: 6px;
   list-style: none;
+}
+.details-toggle-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #15200e;
 }
 .project-details summary::-webkit-details-marker {
   display: none;
@@ -296,6 +371,8 @@
   display: flex;
   gap: 22px;
   margin-top: 17px;
+  position: relative;
+  z-index: 2;
 }
 .workflow-visual {
   width: 100%;
@@ -358,6 +435,11 @@
   padding-top: 5px;
   color: var(--color-muted);
   font-size: 12px;
+}
+.journey-meta .organization-mark {
+  width: 88px;
+  height: 72px;
+  margin-bottom: 16px;
 }
 .journey-meta .mono {
   color: var(--color-text);
@@ -547,14 +629,22 @@
     font-size: 32px;
   }
   .journey-entry {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 16px;
     padding-block: 28px 36px;
   }
   .journey-meta {
-    flex-direction: row;
-    gap: 10px 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 9px;
+    font-size: 9px;
+  }
+  .journey-meta .organization-mark {
+    width: 58px;
+    height: 50px;
+    margin-bottom: 5px;
+  }
+  .journey-meta .mono {
+    font-size: 9px;
   }
   .journey-meta .mono {
     margin: 0;

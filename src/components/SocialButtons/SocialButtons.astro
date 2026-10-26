@@ -1,6 +1,6 @@
 ---
 import type { Link } from "../../types/portfolio";
-import Arrow from "../ui/Arrow.astro";
+import SocialIcon from "../ui/SocialIcon.astro";
 interface Props {
   links: Link[];
 }
@@ -12,8 +12,8 @@ const { links } = Astro.props;
     links.map((link) => (
       <a href={link.href} target="_blank" rel="noopener noreferrer">
         <>
+          <SocialIcon name={link.label} />
           <span>{link.label}</span>
-          <Arrow />
         </>
       </a>
     ))

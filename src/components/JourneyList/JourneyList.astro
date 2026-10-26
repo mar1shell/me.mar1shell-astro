@@ -14,18 +14,16 @@ const { entries } = Astro.props;
     entries.map((entry) => (
       <article class="journey-entry" data-reveal>
         <div class="journey-meta">
+          <OrganizationMark
+            organization={entry.organization}
+            logo={entry.logo}
+          />
           <p class="mono">{entry.period}</p>
           <span>{entry.type}</span>
           {entry.location && <span>{entry.location}</span>}
         </div>
         <div class="journey-body">
-          <div class="organization-row">
-            <OrganizationMark
-              organization={entry.organization}
-              logo={entry.logo}
-            />
-            <p class="organization">{entry.organization}</p>
-          </div>
+          <p class="organization">{entry.organization}</p>
           <h3>{entry.title}</h3>
           <p class="muted">{entry.description}</p>
           {entry.highlights && (

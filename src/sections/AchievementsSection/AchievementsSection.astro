@@ -30,20 +30,28 @@ import Arrow from "../../components/ui/Arrow.astro";
           <div class="award-copy">
             <>
               <p class="eyebrow">{award.title}</p>
-              <h3>{award.result}</h3>
+              <h3>
+                {award.link ? (
+                  <a
+                    class="award-card-link"
+                    href={award.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Read about ${award.title}: ${award.result}`}
+                  >
+                    {award.result}
+                  </a>
+                ) : (
+                  award.result
+                )}
+              </h3>
               <p class="muted">{award.description}</p>
             </>
           </div>
           {award.link && (
-            <a
-              class="award-link"
-              href={award.link}
-              aria-label={`Read about ${award.title}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <span class="award-link" aria-hidden="true">
               <Arrow />
-            </a>
+            </span>
           )}
         </article>
       ))

@@ -47,7 +47,7 @@ export const sections = {
     id: "skills",
     number: "07",
     label: "The toolkit",
-    title: "Tools for the problem.\nNot the other way around.",
+    title: "The tools I build with.",
   },
   contact: {
     id: "contact",
