@@ -30,7 +30,11 @@ export default function PhotoTriptych({ photos, title, id }: Props) {
 
   return (
     <div className="photo-journal">
-      <div className="photo-triptych" aria-label={`Photos from ${title}`}>
+      <div
+        className="photo-triptych"
+        role="group"
+        aria-label={`Photos from ${title}`}
+      >
         {photos.map((item, index) => (
           <a
             className={`photo-shot photo-shot-${index + 1}`}

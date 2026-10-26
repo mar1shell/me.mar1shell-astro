@@ -53,17 +53,6 @@ const structuredData = {
       type="application/ld+json"
       set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
     />
-    <!-- Preserve the existing site's analytics configuration. -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QRTYJR377"
-    ></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-1QRTYJR377");
-    </script>
   </head>
   <body
     ><a class="skip-link" href="#main">Skip to content</a><slot /><PageMotion

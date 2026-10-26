@@ -4,7 +4,7 @@ A personal portfolio built with **Astro, React, and TypeScript**. Astro renders 
 
 ## Run locally
 
-Use Node.js 22 LTS or newer supported by Astro.
+Use Node.js 24 LTS (`nvm use`), or another supported Node version at least 22.23.4.
 
 ```sh
 npm ci
@@ -16,7 +16,19 @@ Open the local URL printed by Astro. Changes to content, components, and styles 
 ```sh
 npm run build       # Production site in dist/
 npm run preview     # Preview that production build
+npm run validate    # Astro/TypeScript check, formatting, tests, production build
+npm run format      # Apply consistent formatting
+npm run test:watch  # Run regression tests while editing
+npm audit           # Audit all dependencies, including development tools
 ```
+
+GitHub Actions runs these quality gates and the dependency audit on pushes and pull requests. Regression tests cover project category filters, keyboard activation, independent project links, expandable details, and analytics consent.
+
+## Dependencies and analytics
+
+The portfolio uses Astro 7 and the React 7 integration. The integration now uses its standard JSX transform; the optional React Compiler was removed because the current integration and Vite plugin advertise incompatible optional compiler peer versions. The site does not need compiler optimizations for its small React islands. See the [Astro 7 migration guide](https://docs.astro.build/en/guides/upgrade-to/v7/) and [React integration migration guide](https://docs.astro.build/en/guides/integrations-guide/react/#upgrading-the-react-integration-to-v700).
+
+Google Analytics stays **off by default**, including when JavaScript or browser storage is unavailable. Visitors can opt in using the footer’s “Enable analytics” button, and withdraw using “Disable analytics.” Only after opt-in does the site load Google’s tracking script. The choice expires after 180 days; withdrawal disables tracking, clears GA cookies, and reloads to unload the tracker. Vercel Analytics and Speed Insights have been removed. Tracking configuration lives in `src/data/analytics.ts`; behavior and tests live in `src/scripts/analytics.ts` and `tests/analytics.test.ts`.
 
 ## Where to edit content
 
