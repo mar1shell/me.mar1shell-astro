@@ -1,0 +1,16 @@
+---
+import { education } from "../../data/education";
+import { sections } from "../../data/sections";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import JourneyList from "../../components/JourneyList/JourneyList.astro";
+---
+
+<section
+  id="education"
+  class="section education-section"
+  aria-labelledby="education-title"
+>
+  <SectionHeading section={sections.education} /><JourneyList
+    entries={education}
+  />
+</section>

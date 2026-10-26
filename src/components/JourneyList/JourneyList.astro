@@ -1,0 +1,64 @@
+---
+import type { JourneyEntry } from "../../types/portfolio";
+import Arrow from "../ui/Arrow.astro";
+import TagList from "../ui/TagList.astro";
+import OrganizationMark from "../OrganizationMark/OrganizationMark.astro";
+interface Props {
+  entries: JourneyEntry[];
+}
+const { entries } = Astro.props;
+---
+
+<div class="journey-list">
+  {
+    entries.map((entry) => (
+      <article class="journey-entry" data-reveal>
+        <div class="journey-meta">
+          <p class="mono">{entry.period}</p>
+          <span>{entry.type}</span>
+          {entry.location && <span>{entry.location}</span>}
+        </div>
+        <div class="journey-body">
+          <div class="organization-row">
+            <OrganizationMark
+              organization={entry.organization}
+              logo={entry.logo}
+            />
+            <p class="organization">{entry.organization}</p>
+          </div>
+          <h3>{entry.title}</h3>
+          <p class="muted">{entry.description}</p>
+          {entry.highlights && (
+            <ul class="highlight-list">
+              {entry.highlights.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          )}
+          {entry.technologies && <TagList items={entry.technologies} />}
+          {entry.image && (
+            <img
+              class="journey-photo"
+              src={entry.image}
+              alt={entry.imageAlt || entry.organization}
+              loading="lazy"
+              width="800"
+              height="500"
+            />
+          )}
+          {entry.link && (
+            <a
+              class="text-link"
+              href={entry.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {entry.link.label}
+              <Arrow />
+            </a>
+          )}
+        </div>
+      </article>
+    ))
+  }
+</div>

@@ -1,38 +1,51 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar/NavBar";
-import AnimatedBackground from "../components/AnimatedBackground/AnimatedBackground.astro";
 import HeroSection from "../sections/HeroSection/HeroSection.astro";
 import AboutMeSection from "../sections/AboutMeSection/AboutMeSection.astro";
-import AchievementsSection from "../sections/AchievementsSection/AchievementsSection.astro";
 import ProjectsSection from "../sections/ProjectsSection/ProjectsSection.astro";
 import ExperienceSection from "../sections/ExperienceSection/ExperienceSection.astro";
+import EducationSection from "../sections/EducationSection/EducationSection.astro";
+import LeadershipSection from "../sections/LeadershipSection/LeadershipSection.astro";
+import AchievementsSection from "../sections/AchievementsSection/AchievementsSection.astro";
+import SkillsSection from "../sections/SkillsSection/SkillsSection.astro";
 import ContactSection from "../sections/ContactSection/ContactSection.astro";
 import Footer from "../components/Footer/Footer.astro";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import SmoothFollower from "../components/SmoothFollower/SmoothFolllower";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
+import { site, navigation, visibleSections } from "../data/site";
+import { sections } from "../data/sections";
+
+// Navigation automatically follows section visibility settings.
+const enabledIds = new Set(
+  Object.entries(visibleSections)
+    .filter(([, visible]) => visible)
+    .map(([key]) => sections[key as keyof typeof sections].id),
+);
+const navItems = navigation.filter((item) =>
+  enabledIds.has(item.href.slice(1)),
+);
 ---
 
 <Layout>
-  <div class="overflow-x-hidden font-sans transition-colors duration-500">
-    <AnimatedBackground />
-    <NavBar client:idle />
-    <main
-      class="container mx-auto flex flex-col items-center justify-center px-5"
-    >
-      <HeroSection />
-      <AboutMeSection />
-      <AchievementsSection />
-      <ProjectsSection />
-      <ExperienceSection />
-      <ContactSection />
-      <Footer />
-      <ScrollToTop />
-    </main>
-    <SmoothFollower client:only="react" />
-  </div>
+  <NavBar
+    items={navItems}
+    name={site.name}
+    username={site.username}
+    client:load
+  />
+  <main id="main" class="page-width" tabindex="-1">
+    <HeroSection />
+    {visibleSections.about && <AboutMeSection />}
+    {visibleSections.projects && <ProjectsSection />}
+    {visibleSections.experience && <ExperienceSection />}
+    {visibleSections.education && <EducationSection />}
+    {visibleSections.leadership && <LeadershipSection />}
+    {visibleSections.achievements && <AchievementsSection />}
+    {visibleSections.skills && <SkillsSection />}
+    {visibleSections.contact && <ContactSection />}
+  </main>
+  <Footer />
   <SpeedInsights />
   <Analytics />
 </Layout>

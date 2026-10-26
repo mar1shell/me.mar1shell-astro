@@ -1,15 +1,51 @@
 ---
-import AchievementCard from "../../components/Achievements/AchievementCard.astro";
-import SectionTitle from "../../components/SectionTitle/SectionTitle.astro";
-import { achievements } from "../../data";
+import { awards } from "../../data/awards";
+import { sections } from "../../data/sections";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import Arrow from "../../components/ui/Arrow.astro";
 ---
 
-<section id="achievements" class="w-full py-20">
-  <SectionTitle title="Achievements" />
-  <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+<section id="awards" class="section" aria-labelledby="awards-title">
+  <SectionHeading section={sections.achievements} /><div class="awards-list">
     {
-      achievements.map((achievement) => (
-        <AchievementCard achievement={achievement} />
+      awards.map((award, index) => (
+        <article
+          class:list={["award-entry", { "award-featured": index === 0 }]}
+          data-reveal
+        >
+          <div class="award-position mono">
+            {String(index + 1).padStart(2, "0")}
+            <span>{award.year}</span>
+          </div>
+          {award.image && (
+            <img
+              class="award-image"
+              src={award.image}
+              alt={`${award.title} event`}
+              loading="lazy"
+              width="220"
+              height="150"
+            />
+          )}
+          <div class="award-copy">
+            <>
+              <p class="eyebrow">{award.title}</p>
+              <h3>{award.result}</h3>
+              <p class="muted">{award.description}</p>
+            </>
+          </div>
+          {award.link && (
+            <a
+              class="award-link"
+              href={award.link}
+              aria-label={`Read about ${award.title}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Arrow />
+            </a>
+          )}
+        </article>
       ))
     }
   </div>

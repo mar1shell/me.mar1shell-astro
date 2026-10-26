@@ -1,0 +1,72 @@
+---
+import type { LeadershipEntry } from "../../types/portfolio";
+import OrganizationMark from "../OrganizationMark/OrganizationMark.astro";
+import PhotoTriptych from "../PhotoTriptych/PhotoTriptych";
+import Arrow from "../ui/Arrow.astro";
+interface Props {
+  entries: LeadershipEntry[];
+}
+const { entries } = Astro.props;
+---
+
+<div class="leadership-stories">
+  {
+    entries.map((entry, index) => (
+      <article
+        class:list={[
+          "leadership-story",
+          { "leadership-story-reversed": index % 2 !== 0 },
+        ]}
+        aria-labelledby={`leadership-${entry.id}`}
+      >
+        <div class="leadership-story-copy" data-reveal>
+          <div class="story-kicker mono">
+            <span>Story {String(index + 1).padStart(2, "0")}</span>
+            {entry.example && <span class="example-badge">Layout example</span>}
+          </div>
+          <div class="organization-row">
+            <>
+              <OrganizationMark
+                organization={entry.organization}
+                logo={entry.logo}
+              />
+              <p class="organization">{entry.organization}</p>
+            </>
+          </div>
+          <h3 id={`leadership-${entry.id}`}>{entry.title}</h3>
+          <p class="story-meta mono">
+            {entry.period}
+            {entry.type && <> / {entry.type}</>}
+          </p>
+          <p class="muted">{entry.description}</p>
+          {entry.highlights && (
+            <ul class="highlight-list">
+              {entry.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          )}
+          {entry.link && (
+            <a
+              class="text-link"
+              href={entry.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {entry.link.label}
+              <Arrow />
+            </a>
+          )}
+        </div>
+        <div class="leadership-story-photos" data-reveal>
+          <PhotoTriptych
+            photos={entry.photos}
+            title={entry.title}
+            id={entry.id}
+            client:visible
+          />
+        </div>
+      </article>
+    ))
+  }
+</div>

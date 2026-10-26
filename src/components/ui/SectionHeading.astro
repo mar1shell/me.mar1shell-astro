@@ -1,0 +1,23 @@
+---
+import type { SectionMeta } from "../../types/portfolio";
+interface Props {
+  section: SectionMeta;
+}
+const { section } = Astro.props;
+---
+
+<header class="section-heading" data-reveal>
+  <p class="eyebrow">
+    <span class="section-number">{section.number}</span>
+    {section.label}
+  </p>
+  <div class="section-heading-content">
+    <h2 id={`${section.id}-title`}>{section.title}</h2>
+    {
+      section.description && (
+        <p class="section-description">{section.description}</p>
+      )
+    }
+    <slot />
+  </div>
+</header>

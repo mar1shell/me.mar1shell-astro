@@ -1,15 +1,218 @@
 @import "tailwindcss";
+@import "./components.css";
+@import "./sections.css";
+@import "./leadership.css";
+@import "./hero.css";
+@import "./motion.css";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-/* Define custom font families */
-
-@theme {
-    --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, monospace;
-    --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+/* Design tokens: change the whole palette or typography here. */
+:root {
+  --color-bg: #111410;
+  --color-surface: #181c16;
+  --color-text: #f0f0e7;
+  --color-muted: #a5aca0;
+  --color-accent: #b6f36a;
+  --color-line: #30362b;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-editorial: "Instrument Serif", Georgia, serif;
+  --page-width: 1320px;
+  --page-gutter: clamp(22px, 4.7vw, 76px);
+  color-scheme: dark;
 }
-
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+* {
+  box-sizing: border-box;
+}
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+summary,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+a,
+button,
+summary {
+  touch-action: manipulation;
+}
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 6px;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+p,
+h1,
+h2,
+h3,
+ul,
+figure {
+  margin: 0;
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+h1,
+h2,
+h3 {
+  font-weight: 500;
+}
+.page-width {
+  width: calc(100% - var(--page-gutter) * 2);
+  max-width: var(--page-width);
+  margin-inline: auto;
+}
+.mono,
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.accent {
+  color: var(--color-accent);
+}
+.muted {
+  color: var(--color-muted);
+}
+.editorial-note {
+  font-family: var(--font-editorial);
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.25;
+}
+.section {
+  border-top: 1px solid var(--color-line);
+  padding-block: clamp(64px, 8vw, 112px);
+  scroll-margin-top: 24px;
+}
+.section-heading {
+  margin-bottom: 52px;
+}
+.section-heading > .eyebrow {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  color: var(--color-muted);
+  margin-bottom: 32px;
+}
+.section-number {
+  color: var(--color-accent);
+}
+.section-heading-content {
+  display: flex;
+  gap: 50px;
+  align-items: end;
+  justify-content: space-between;
+}
+h2 {
+  font-size: clamp(34px, 4.8vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+  white-space: pre-line;
+  text-wrap: balance;
+}
+.section-description {
+  color: var(--color-muted);
+  max-width: 340px;
+  font-size: 15px;
+  padding-bottom: 4px;
+}
+h3 {
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+.section-end {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  padding-top: 36px;
+}
+.section-end .editorial-note {
+  color: var(--color-muted);
+}
+.skip-link {
+  position: fixed;
+  left: 20px;
+  top: 16px;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  transform: translateY(-180%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+@media (max-width: 760px) {
+  .section-heading-content {
+    flex-direction: column;
+    align-items: start;
+    gap: 22px;
+  }
+  .section-description {
+    max-width: 430px;
+  }
+  .section-heading {
+    margin-bottom: 36px;
+  }
+  .section-heading > .eyebrow {
+    margin-bottom: 24px;
+    gap: 14px;
+    font-size: 10px;
+  }
+  .section-end {
+    flex-wrap: wrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

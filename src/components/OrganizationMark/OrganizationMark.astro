@@ -1,0 +1,31 @@
+---
+interface Props {
+  organization: string;
+  logo?: string;
+}
+const { organization, logo } = Astro.props;
+const initials = organization
+  .split(/\s+/)
+  .filter((word) => /^[a-z]/i.test(word))
+  .slice(0, 2)
+  .map((word) => word[0])
+  .join("");
+---
+
+<span
+  class:list={["organization-mark", { "organization-mark-initials": !logo }]}
+>
+  {
+    logo ? (
+      <img
+        src={logo}
+        alt={`${organization} logo`}
+        loading="lazy"
+        width="60"
+        height="60"
+      />
+    ) : (
+      <span aria-hidden="true">{initials}</span>
+    )
+  }
+</span>

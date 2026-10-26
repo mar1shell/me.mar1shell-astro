@@ -1,11 +1,38 @@
 ---
-import SectionTitle from "../../components/SectionTitle/SectionTitle.astro";
-import BentoGrid from "../../components/BenToGrid/BentoGrid.tsx";
+import { about } from "../../data/about";
+import { site } from "../../data/site";
+import { sections } from "../../data/sections";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
 ---
 
-<section id="about-me-section" class="max-w-5xl px-4 py-6">
-  <SectionTitle title="About Me" />
-  <div class="mt-10 h-auto md:h-100">
-    <BentoGrid />
+<section id="about" class="section about-section" aria-labelledby="about-title">
+  <SectionHeading section={sections.about} />
+  <div class="about-grid" data-reveal>
+    <figure class="portrait-frame">
+      <img
+        src={site.portrait}
+        alt={site.name}
+        width="480"
+        height="560"
+        loading="lazy"
+      /><figcaption class="mono">
+        <span>01 / A little introduction</span><span aria-hidden="true">↗</span>
+      </figcaption>
+    </figure><div class="about-copy">
+      <p class="about-lead">{about.lead}</p>{
+        about.paragraphs.map((paragraph) => <p class="muted">{paragraph}</p>)
+      }<div class="interest-list">
+        <p class="eyebrow">Away from the editor</p><ul>
+          {
+            about.interests.map((interest, i) => (
+              <li>
+                <span class="mono">0{i + 1}</span>
+                {interest}
+              </li>
+            ))
+          }
+        </ul>
+      </div><p class="editorial-note portrait-note">{about.portraitCaption}</p>
+    </div>
   </div>
 </section>

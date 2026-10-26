@@ -1,0 +1,46 @@
+---
+import {
+  leadership,
+  communityNote,
+  leadershipExamplesNote,
+} from "../../data/leadership";
+import { sections } from "../../data/sections";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import LeadershipStories from "../../components/LeadershipStories/LeadershipStories.astro";
+---
+
+<section id="community" class="section" aria-labelledby="community-title">
+  <SectionHeading section={sections.leadership} />
+  {
+    leadership.some((entry) => entry.example) && (
+      <p class="leadership-example-note">
+        <span class="mono">Design preview</span>
+        {leadershipExamplesNote}
+      </p>
+    )
+  }
+  {
+    leadership.length ? (
+      <LeadershipStories entries={leadership} />
+    ) : (
+      <div class="community-note" data-reveal>
+        <>
+          <div class="community-symbol" aria-hidden="true">
+            <>
+              <span />
+              <span />
+              <span />
+            </>
+          </div>
+          <div>
+            <>
+              <h3>{communityNote.title}</h3>
+              <p class="muted">{communityNote.description}</p>
+              <p class="editorial-note">{communityNote.caption}</p>
+            </>
+          </div>
+        </>
+      </div>
+    )
+  }
+</section>

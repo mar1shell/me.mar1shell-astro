@@ -1,0 +1,29 @@
+---
+import { skillGroups } from "../../data/skills";
+import { sections } from "../../data/sections";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+---
+
+<section id="skills" class="section" aria-labelledby="skills-title">
+  <SectionHeading section={sections.skills} /><div
+    class="skills-grid"
+    data-reveal
+  >
+    {
+      skillGroups.map((group, index) => (
+        <article class="skill-group">
+          <>
+            <span class="mono accent">0{index + 1} /</span>
+            <h3>{group.title}</h3>
+            <p class="muted">{group.description}</p>
+            <ul>
+              {group.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        </article>
+      ))
+    }
+  </div>
+</section>

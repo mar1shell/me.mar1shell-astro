@@ -1,11 +1,59 @@
 ---
-import SectionTitle from "../../components/SectionTitle/SectionTitle.astro";
-import ContactForm from "../../components/ContactForm/ContactForm";
+import { site } from "../../data/site";
+import { sections } from "../../data/sections";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import Arrow from "../../components/ui/Arrow.astro";
+import CopyEmail from "../../components/CopyEmail/CopyEmail";
 ---
 
-<section class="px-4 py-6" id="contact-section">
-  {/* Section Header */}
-  <SectionTitle title="Contact Me" />
-  {/* Contact Form */}
-  <ContactForm client:only="react" />
+<section
+  id="contact"
+  class="section contact-section"
+  aria-labelledby="contact-title"
+>
+  <SectionHeading section={sections.contact} /><div
+    class="contact-grid"
+    data-reveal
+  >
+    <div>
+      <p class="availability mono">
+        <span class="status-dot"></span>{site.availability}
+      </p><a class="contact-email" href={`mailto:${site.email}`}
+        >{site.email}<Arrow /></a
+      ><CopyEmail email={site.email} client:visible />
+    </div><div class="contact-links">
+      <p class="eyebrow">Find me elsewhere</p>{
+        site.socials.map((social) => (
+          <a
+            class="text-link"
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {social.label}
+            <Arrow />
+          </a>
+        ))
+      }{
+        site.bookingUrl && (
+          <a
+            class="text-link"
+            href={site.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book a conversation
+            <Arrow />
+          </a>
+        )
+      }{
+        site.cvUrl && (
+          <a class="text-link" href={site.cvUrl} download>
+            Download CV
+            <Arrow direction="down" />
+          </a>
+        )
+      }
+    </div>
+  </div>
 </section>

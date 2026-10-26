@@ -1,0 +1,71 @@
+---
+// A code-native illustration; no external image or canvas runtime needed.
+const points = Array.from({ length: 72 }, (_, i) => {
+  const angle = i * 2.399963;
+  const radius = Math.sqrt(i / 72) * 180;
+  return {
+    x: 220 + Math.cos(angle) * radius,
+    y: 220 + Math.sin(angle) * radius,
+  };
+});
+---
+
+<div class="network-field" aria-hidden="true">
+  <svg viewBox="0 0 440 440" fill="none">
+    <defs
+      ><radialGradient id="field-glow"
+        ><stop stop-color="#b6f36a" stop-opacity=".12"></stop><stop
+          offset="1"
+          stop-color="#b6f36a"
+          stop-opacity="0"></stop></radialGradient
+      ></defs
+    >
+    <circle cx="220" cy="220" r="215" fill="url(#field-glow)"></circle>
+    <g class="network-orbits" stroke="currentColor" stroke-width=".6">
+      <circle cx="220" cy="220" r="65"></circle><circle
+        cx="220"
+        cy="220"
+        r="127"></circle><circle cx="220" cy="220" r="185"></circle>
+      <ellipse
+        cx="220"
+        cy="220"
+        rx="185"
+        ry="65"
+        transform="rotate(-35 220 220)"></ellipse>
+      <ellipse cx="220" cy="220" rx="185" ry="65" transform="rotate(35 220 220)"
+      ></ellipse>
+      <path d="M220 15v410M15 220h410" stroke-dasharray="2 7"></path>
+    </g>
+    <g class="network-web"
+      >{
+        points.map((point, i) => (
+          <>
+            <>
+              <path
+                d={`M${point.x},${point.y} L${points[(i + 5) % points.length].x},${points[(i + 5) % points.length].y}`}
+                stroke="currentColor"
+                stroke-opacity=".11"
+                stroke-width=".6"
+              />
+              <circle
+                cx={point.x}
+                cy={point.y}
+                r={i % 9 === 0 ? 2.8 : 1.2}
+                fill="currentColor"
+                opacity={i % 9 === 0 ? 0.9 : 0.35}
+              />
+            </>
+          </>
+        ))
+      }</g
+    >
+    <circle cx="220" cy="220" r="7" fill="currentColor"></circle><circle
+      class="network-pulse"
+      cx="220"
+      cy="220"
+      r="17"
+      stroke="currentColor"
+      stroke-opacity=".5"></circle>
+  </svg>
+  <span class="network-label mono">Ideas ↔ systems ↔ people</span>
+</div>

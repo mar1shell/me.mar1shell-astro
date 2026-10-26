@@ -1,0 +1,21 @@
+---
+import type { Link } from "../../types/portfolio";
+import Arrow from "../ui/Arrow.astro";
+interface Props {
+  links: Link[];
+}
+const { links } = Astro.props;
+---
+
+<nav class="social-buttons" aria-label="Social profiles">
+  {
+    links.map((link) => (
+      <a href={link.href} target="_blank" rel="noopener noreferrer">
+        <>
+          <span>{link.label}</span>
+          <Arrow />
+        </>
+      </a>
+    ))
+  }
+</nav>

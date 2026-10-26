@@ -1,0 +1,341 @@
+/* A small photo journal for each community role. Content lives in data/leadership.ts. */
+.leadership-example-note {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 14px 18px;
+  border: 1px dashed #566947;
+  color: var(--color-muted);
+  font-size: 12px;
+  margin-bottom: 34px;
+}
+.leadership-example-note > span {
+  color: var(--color-accent);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  flex-shrink: 0;
+}
+.leadership-story {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 70px);
+  padding-block: 36px 48px;
+  border-top: 1px solid var(--color-line);
+}
+.leadership-story + .leadership-story {
+  padding-top: 48px;
+}
+.leadership-story:last-child {
+  padding-bottom: 0;
+}
+.leadership-story-reversed {
+  grid-template-columns: minmax(0, 1.14fr) minmax(0, 0.86fr);
+}
+.leadership-story-reversed .leadership-story-copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+.leadership-story-reversed .leadership-story-photos {
+  grid-column: 1;
+  grid-row: 1;
+}
+.leadership-story-copy,
+.leadership-story-photos {
+  min-width: 0;
+}
+.story-kicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  font-size: 9px;
+  margin-bottom: 26px;
+}
+.example-badge {
+  color: #a9c88e;
+  border: 1px solid #4c613c;
+  padding: 3px 7px;
+  font-size: 8px;
+}
+.leadership-story h3 {
+  font-size: clamp(26px, 3vw, 39px);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.story-meta {
+  color: var(--color-muted);
+  font-size: 9px;
+  margin-block: 14px 22px;
+}
+.leadership-story-copy > .muted {
+  font-size: 14px;
+  line-height: 1.75;
+}
+.leadership-story .highlight-list {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.leadership-story .text-link {
+  margin-top: 18px;
+}
+.photo-triptych {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  aspect-ratio: 1.32;
+  padding: 10px;
+}
+.photo-shot {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border: 5px solid #e2e6d8;
+  border-bottom-width: 22px;
+  box-shadow: 0 8px 22px #0005;
+  background: var(--color-surface);
+  isolation: isolate;
+}
+.photo-shot-1 {
+  grid-row: 1 / 3;
+  transform: rotate(-2deg);
+  z-index: 1;
+}
+.photo-shot-2 {
+  transform: rotate(3deg) translateY(-3px);
+}
+.photo-shot-3 {
+  transform: rotate(-2deg) translateY(3px);
+}
+.photo-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.82);
+}
+.photo-shot::after {
+  content: "";
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, #000b);
+  pointer-events: none;
+}
+.photo-shot-number {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 8px;
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border: 1px solid #eef4e194;
+  background: #11141090;
+  font-size: 8px;
+  color: #fff;
+}
+.photo-shot-caption {
+  position: absolute;
+  z-index: 1;
+  left: 10px;
+  right: 10px;
+  bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 8px;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.photo-shot-caption > span {
+  font-size: 17px;
+  color: var(--color-accent);
+}
+.photo-journal-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 13px;
+  padding-inline: 8px;
+  color: var(--color-muted);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.photo-journal-footer > span:first-child {
+  font-family: var(--font-editorial);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 19px;
+  font-style: italic;
+  color: #bbccaa;
+}
+.photo-journal-footer > span:last-child {
+  align-self: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .photo-shot {
+    transition:
+      transform 240ms ease,
+      box-shadow 240ms ease;
+  }
+  .photo-shot img {
+    transition: filter 240ms ease;
+  }
+  .photo-shot:hover,
+  .photo-shot:focus-visible {
+    transform: rotate(0) translateY(-3px);
+    box-shadow: 0 12px 30px #0007;
+    z-index: 2;
+  }
+  .photo-shot:hover img {
+    filter: saturate(1);
+  }
+}
+/* Native dialog supplies focus containment, Escape, and focus restoration. */
+body:has(.photo-dialog[open]) {
+  overflow: hidden;
+}
+.photo-dialog {
+  width: min(1000px, calc(100% - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  padding: 18px;
+  border: 1px solid #6b8155;
+  background: #131910;
+  color: var(--color-text);
+}
+.photo-dialog::backdrop {
+  background: #070a06e8;
+  backdrop-filter: blur(8px);
+}
+.photo-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.photo-viewer-toolbar,
+.photo-viewer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.photo-viewer-toolbar > .mono {
+  font-size: 10px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+.photo-viewer-toolbar > p {
+  font-size: 13px;
+  color: var(--color-muted);
+}
+.photo-control {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid #4a5a3b;
+  color: var(--color-text);
+  background: #202b18;
+  font-size: 23px;
+}
+.photo-control:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.photo-viewer-image {
+  width: 100%;
+  height: min(65dvh, 650px);
+  object-fit: contain;
+  background: #080d06;
+}
+.photo-viewer-bottom > p {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+.photo-viewer-controls {
+  display: flex;
+  gap: 8px;
+}
+@media (max-width: 900px) {
+  .leadership-story,
+  .leadership-story-reversed {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .leadership-story-reversed .leadership-story-copy,
+  .leadership-story-reversed .leadership-story-photos {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .leadership-story-copy {
+    max-width: 650px;
+  }
+  .leadership-story-photos {
+    max-width: 650px;
+    width: 100%;
+  }
+  .photo-triptych {
+    aspect-ratio: 1.5;
+  }
+}
+@media (max-width: 480px) {
+  .leadership-example-note {
+    flex-direction: column;
+    gap: 7px;
+    padding: 13px;
+  }
+  .story-kicker {
+    margin-bottom: 20px;
+  }
+  .photo-triptych {
+    gap: 8px;
+    padding: 7px;
+    aspect-ratio: 1.12;
+  }
+  .photo-shot {
+    border-width: 3px;
+    border-bottom-width: 14px;
+  }
+  .photo-shot-number {
+    width: 19px;
+    height: 19px;
+    top: 5px;
+    left: 5px;
+    font-size: 7px;
+  }
+  .photo-shot-caption {
+    left: 6px;
+    right: 6px;
+    bottom: 5px;
+    font-size: 8px;
+  }
+  .photo-journal-footer {
+    padding-inline: 0;
+  }
+  .photo-journal-footer > span:first-child {
+    font-size: 17px;
+  }
+  .photo-dialog {
+    padding: 12px;
+  }
+  .photo-viewer-toolbar {
+    gap: 10px;
+  }
+  .photo-viewer-toolbar > p {
+    font-size: 11px;
+  }
+  .photo-viewer-bottom > p {
+    font-size: 11px;
+  }
+}
