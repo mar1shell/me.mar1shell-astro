@@ -31,4 +31,14 @@ export const awards: Award[] = [
     image: "/images/achievements/ai-crafters/ai-crafters.webp",
     link: "https://www.linkedin.com/feed/update/urn:li:activity:7348743331713105920/",
   },
+  {
+    id: "medicore-hackathon",
+    title: "Mistral AI Worldwide Hackathon",
+    result: "Top 10 Worldwide",
+    year: "2026",
+    description:
+      "Co-developed MediCore AI, a voice-first clinical safety assistant combining Mistral OCR, Mistral Large, and ElevenLabs. Ranked in the top 10 globally out of 200+ submissions.",
+    image: "/images/achievements/medicore/medicore.webp", // Update image path as needed
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7436739441345396738/", // Update link if pointing to a demo/post
+  },
 ];

@@ -8,7 +8,8 @@ export const site = {
   email: "elhamdaouimar1@gmail.com",
   url: "https://www.marouane.net",
   location: "Casablanca, Morocco", // Update whenever you move.
-  portrait: "/images/avatar.webp",
+  portrait: "/images/avatar.jpeg",
+  portrait2: "/images/avatar2.jpeg",
   description:
     "The portfolio of Marouane El-Hamdaoui. Software engineering, applied AI, selected projects, and the journey behind the work.",
   // Put your PDF in public/ and set this to e.g. "/cv.pdf". No button appears until then.
@@ -47,7 +48,7 @@ export const visibleSections = {
 export const hero = {
   eyebrow: "An engineer’s mindset. A builder’s curiosity.",
   introduction:
-    "I turn complex problems into thoughtful software. Exploring the space between full-stack development, intelligent systems, and real-world impact.",
+    "I turn complex problems into thoughtful software. Exploring the space between AI & full-stack development, intelligent systems, and real-world impact.",
   primaryAction: { label: "Explore my work", href: "#work" },
   secondaryAction: { label: "Let’s talk", href: "#contact" },
   meetingLabel: "Book a meeting",

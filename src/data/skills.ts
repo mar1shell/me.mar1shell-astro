@@ -1,24 +1,25 @@
 export const skillGroups = [
   {
     title: "Interfaces",
-    description: "From an idea to an experience.",
-    items: ["React", "TypeScript", "Astro", "Tailwind CSS"],
+    description: "From an idea to a responsive experience.",
+    items: ["React", "TypeScript", "Tailwind CSS", "Vite", "Astro"],
   },
   {
     title: "Behind the scenes",
-    description: "The systems that make it work.",
-    items: ["Node.js", "Express.js", "Java", "Spring Boot", "REST APIs"],
+    description: "The backends, APIs, and systems beneath the web.",
+    items: ["FastAPI", "Express.js", "REST APIs", "C / C++", "Linux & Sockets"],
   },
   {
     title: "Intelligence & foundations",
-    description: "Understanding what’s underneath.",
+    description:
+      "Computer vision, multimodal AI, and core software engineering.",
     items: [
       "Python",
-      "C",
-      "C++",
+      "YOLO & OpenCV",
+      "PyTorch",
+      "Mistral AI / LLMs",
       "Machine learning",
-      "Algorithms",
-      "Data structures",
+      "Algorithms & Data structures",
     ],
   },
 ];

@@ -149,6 +149,7 @@
 }
 .project-toolbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -157,6 +158,7 @@
 }
 .project-filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
 }
 .project-filters button {
@@ -190,6 +192,15 @@
     transform 220ms ease,
     border-color 220ms ease,
     box-shadow 220ms ease;
+}
+/* Fill the final row when the current filter leaves an odd card count. */
+@media (min-width: 761px) {
+  .project-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
 }
 .project-card:hover,
 .project-card:focus-within {
@@ -244,19 +255,12 @@
   background: var(--color-accent);
   color: var(--color-bg);
 }
-.project-featured {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1.32fr 1fr;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-}
 .project-visual {
   position: relative;
   overflow: hidden;
   background: #252d20;
-  aspect-ratio: 1.65;
-  padding: 42px 28px 25px;
+  aspect-ratio: 16 / 11;
+  padding: 48px 20px 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -265,19 +269,27 @@
     linear-gradient(90deg, #ffffff04 1px, transparent 1px);
   background-size: 28px 28px;
 }
-.project-visual > img {
-  object-fit: contain;
+.project-image {
+  position: absolute;
+  inset: 48px 20px 36px;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px #0004;
+  border: 1px solid #5c68544a;
+}
+.project-image > img {
+  display: block;
+  object-fit: cover;
+  object-position: center top;
   width: 100%;
   height: 100%;
   filter: saturate(0.75);
   transition:
     transform 0.4s,
     filter 0.4s;
-  box-shadow: 0 8px 30px #0004;
-  border: 1px solid #5c68544a;
 }
-.project-card:hover .project-visual > img {
-  transform: translateY(-3px) scale(1.025);
+.project-card:hover .project-image > img {
+  transform: scale(1.025);
   filter: saturate(1);
 }
 .project-index {
@@ -314,17 +326,6 @@
 .project-summary {
   color: #c5cabf;
   font-size: 15px;
-}
-.project-featured .project-copy {
-  padding: clamp(24px, 3.2vw, 45px);
-}
-.project-featured .project-visual {
-  height: 100%;
-  min-height: 320px;
-  aspect-ratio: auto;
-}
-.project-featured .project-copy h3 {
-  font-size: 42px;
 }
 .project-details {
   margin-block: 17px 20px;
@@ -405,7 +406,7 @@
 }
 .project-placeholder strong {
   display: block;
-  font-size: 34px;
+  font-size: clamp(22px, 3vw, 34px);
   line-height: 1.2;
   margin-top: 20px;
   letter-spacing: -0.05em;
@@ -545,12 +546,6 @@
   .nav-number {
     display: none;
   }
-  .project-featured {
-    grid-template-columns: 1fr 1fr;
-  }
-  .project-featured .project-copy {
-    padding: 25px;
-  }
 }
 @media (max-width: 760px) {
   .header-inner {
@@ -606,7 +601,7 @@
     gap: 10px;
   }
   .project-filters {
-    gap: 20px;
+    gap: 0 20px;
   }
   .project-filters button {
     font-size: 11px;
@@ -617,16 +612,6 @@
   }
   .project-grid {
     grid-template-columns: 1fr;
-  }
-  .project-featured {
-    display: block;
-  }
-  .project-featured .project-visual {
-    min-height: 0;
-    aspect-ratio: 1.65;
-  }
-  .project-featured .project-copy h3 {
-    font-size: 32px;
   }
   .journey-entry {
     grid-template-columns: 62px minmax(0, 1fr);

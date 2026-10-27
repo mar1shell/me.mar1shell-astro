@@ -23,13 +23,15 @@ export default function ProjectCard({
         className={`project-visual ${!project.image ? "project-diagram" : ""}`}
       >
         {project.image ? (
-          <img
-            src={project.image}
-            alt={project.imageAlt || project.title}
-            loading="lazy"
-            width="1200"
-            height="750"
-          />
+          <div className="project-image">
+            <img
+              src={project.image}
+              alt={project.imageAlt || project.title}
+              loading="lazy"
+              width="1200"
+              height="750"
+            />
+          </div>
         ) : project.preview ? (
           <div className="workflow-visual">
             <span className="mono">{project.preview.label}</span>

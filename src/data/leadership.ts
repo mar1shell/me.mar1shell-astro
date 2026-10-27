@@ -6,74 +6,40 @@ import type { LeadershipEntry } from "../types/portfolio";
  * The reused event photos below demonstrate the composition, not these roles.
  */
 export const leadership: LeadershipEntry[] = [
-  {
-    id: "community-example",
-    title: "Bringing people & ideas together.",
-    organization: "Community initiative",
-    period: "Your dates",
-    type: "Workshops & knowledge sharing",
-    example: true,
+ {
+    id: "mmp-2026",
+    title: "Bridging EU-MENA Leaders for Responsible AI & Policy Dialogue",
+    organization: "Swedish Dialogue Institute for Middle East & North Africa",
+    period: "Feb 2026 – Dec 2026",
+    type: "International Fellowship & Policy Leadership",
     description:
-      "A place for the workshops, meetups, and shared learning experiences you help bring to life. Tell the story of the people, the shared challenge, and your part in making it happen.",
+      "Selected as an international fellow for a cross-regional leadership initiative bringing together emerging leaders, researchers, and policy-makers across Europe and the MENA region. Participated in high-level working sessions in Stockholm and Amman to drive collaborative action around responsible AI deployment, youth inclusion, and policy innovation.",
     highlights: [
-      "Your contribution to organizing, mentoring, or sharing knowledge.",
-      "The outcome that made the experience meaningful.",
+      "Engaged in high-level diplomatic audiences and policy dialogues in Stockholm and Amman on regional tech governance.",
+      "Contributed technical perspectives on responsible AI implementation, ethics, and youth-led digital transformation.",
     ],
     photos: [
       {
-        src: "/images/achievements/odc/odc.webp",
-        alt: "Atlas Coders team at Orange Digital Center, reused as a layout sample",
-        caption: "The people · sample event photo",
+        src: "/images/leadership/mmp/mmp-audience.webp",
+        alt: "Marouane EL-HAMDAOUI shaking hands with HRH Prince El Hassan bin Talal during high-level audience",
+        caption: "Diplomatic audience · High-level dialogue in Amman",
+        position: "35% 30%",
+      },
+      {
+        src: "/images/leadership/mmp/mmp-group-amman.webp",
+        alt: "MMP 2026 cohort group photo in Amman with diplomats and organizers",
+        caption: "EU-MENA Delegation · Official gathering in Jordan",
+        position: "50% 50%",
+      },
+      {
+        src: "/images/leadership/mmp/mmp-dialogue.webp",
+        alt: "Marouane EL-HAMDAOUI engaging in cross-cultural workshop discussions",
+        caption: "Working session · Peer mentorship & policy exchange",
         position: "50% 40%",
       },
-      {
-        src: "/images/achievements/ai-crafters/ai-crafters.webp",
-        alt: "Presentation at AI Crafters, reused as a layout sample",
-        caption: "The conversation",
-        position: "50% 53%",
-      },
-      {
-        src: "/images/achievements/ecpc/ecpc.webp",
-        alt: "ECPC award presentation, reused as a layout sample",
-        caption: "A shared milestone",
-        position: "50% 33%",
-      },
     ],
   },
-  {
-    id: "volunteering-example",
-    title: "Small actions. Shared impact.",
-    organization: "Student association",
-    period: "Your dates",
-    type: "Volunteering & collective action",
-    example: true,
-    description:
-      "A second example for an extracurricular or volunteering role. Connect the purpose of the initiative with what you contributed and the moments you want to remember.",
-    highlights: [
-      "The initiative you supported and the people you worked with.",
-      "A concrete contribution or lesson from the experience.",
-    ],
-    photos: [
-      {
-        src: "/images/achievements/ai-crafters/ai-crafters.webp",
-        alt: "AI Crafters presentation, reused to preview a second three-photo story",
-        caption: "Sharing an idea · sample event photo",
-        position: "50% 48%",
-      },
-      {
-        src: "/images/achievements/ecpc/ecpc.webp",
-        alt: "ECPC award presentation, reused to preview the story layout",
-        caption: "A moment to remember",
-        position: "50% 33%",
-      },
-      {
-        src: "/images/achievements/odc/odc.webp",
-        alt: "Atlas Coders team, reused to preview the story layout",
-        caption: "Better together",
-        position: "50% 35%",
-      },
-    ],
-  },
+  
 ];
 
 export const leadershipExamplesNote =
