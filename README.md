@@ -28,7 +28,7 @@ GitHub Actions runs these quality gates and the dependency audit on pushes and p
 
 The portfolio uses Astro 7 and the React 7 integration. The integration now uses its standard JSX transform; the optional React Compiler was removed because the current integration and Vite plugin advertise incompatible optional compiler peer versions. The site does not need compiler optimizations for its small React islands. See the [Astro 7 migration guide](https://docs.astro.build/en/guides/upgrade-to/v7/) and [React integration migration guide](https://docs.astro.build/en/guides/integrations-guide/react/#upgrading-the-react-integration-to-v700).
 
-Google Analytics stays **off by default**, including when JavaScript or browser storage is unavailable. Visitors can opt in using the footer’s “Enable analytics” button, and withdraw using “Disable analytics.” Only after opt-in does the site load Google’s tracking script. The choice expires after 180 days; withdrawal disables tracking, clears GA cookies, and reloads to unload the tracker. Vercel Analytics and Speed Insights have been removed. Tracking configuration lives in `src/data/analytics.ts`; behavior and tests live in `src/scripts/analytics.ts` and `tests/analytics.test.ts`.
+Google Tag Manager stays **off by default**. The analytics notice offers equally styled Accept and Reject options, and Cookie settings in the footer lets visitors change their choice. Both choices are remembered for 180 days. Withdrawal clears GA cookies and reloads to unload the container. Keep the container configured for analytics only; advertising or other tracking requires a separate choice and disclosure. The container and measurement IDs are in `src/data/analytics.ts`.
 
 ## Where to edit content
 

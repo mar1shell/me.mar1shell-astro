@@ -7,7 +7,7 @@ export const site = {
   role: "Software engineering & applied AI",
   email: "elhamdaouimar1@gmail.com",
   url: "https://www.marouane.net",
-  location: "Casablanca, Morocco", // Update whenever you move.
+  location: "France, Aix-en-Provence", // Update whenever you move.
   portrait: "/images/avatar.jpeg",
   portrait2: "/images/avatar2.jpeg",
   description:

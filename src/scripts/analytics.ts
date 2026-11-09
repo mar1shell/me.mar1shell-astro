@@ -3,20 +3,27 @@ import { analytics } from "../data/analytics";
 declare global {
   interface Window {
     dataLayer?: unknown[];
-    gtag?: (...args: unknown[]) => void;
     [key: `ga-disable-${string}`]: boolean;
   }
 }
 
-export function hasAnalyticsConsent(): boolean {
+export function readAnalyticsChoice(): boolean | null {
   try {
     const saved = JSON.parse(
       localStorage.getItem(analytics.consentKey) || "null",
     );
-    return saved?.accepted === true && saved.expires > Date.now();
+    return typeof saved?.accepted === "boolean" &&
+      typeof saved.expires === "number" &&
+      saved.expires > Date.now()
+      ? saved.accepted
+      : null;
   } catch {
-    return false;
+    return null;
   }
+}
+
+export function hasAnalyticsConsent() {
+  return readAnalyticsChoice() === true;
 }
 
 export function enableAnalytics() {
@@ -24,13 +31,11 @@ export function enableAnalytics() {
   window[`ga-disable-${analytics.measurementId}`] = false;
   if (document.getElementById("consented-analytics")) return;
   window.dataLayer = window.dataLayer || [];
-  window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);
-  window.gtag("js", new Date());
-  window.gtag("config", analytics.measurementId);
+  window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
   const script = document.createElement("script");
   script.id = "consented-analytics";
   script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${analytics.measurementId}`;
+  script.src = `https://www.googletagmanager.com/gtm.js?id=${analytics.containerId}`;
   document.head.append(script);
 }
 
@@ -40,6 +45,7 @@ export function saveAnalyticsConsent(accepted: boolean) {
       analytics.consentKey,
       JSON.stringify({
         accepted,
+        decidedAt: Date.now(),
         expires: Date.now() + analytics.consentLifetimeMs,
       }),
     );

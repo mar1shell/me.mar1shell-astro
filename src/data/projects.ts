@@ -41,7 +41,7 @@ export const projects: PortfolioProject[] = [
     links: [
       {
         label: "Source code",
-        href: "https://github.com/mar1shell/medicore-ai", // Replace with your repository link if different
+        href: "https://github.com/mar1shell/MediCore",
       },
     ],
   },
@@ -57,9 +57,7 @@ export const projects: PortfolioProject[] = [
     imageAlt: "MonClavier keyboard store interface",
     status: "In development",
     featured: true,
-    links: [
-      { label: "Visit project", href: "https://monclavier.mar1shell.me" },
-    ],
+    links: [],
   },
   {
     id: "mar1server",

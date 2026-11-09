@@ -3,17 +3,7 @@ import "../styles/index.css";
 import { site } from "../data/site";
 import { motion } from "../data/motion";
 import PageMotion from "../components/PageMotion/PageMotion.astro";
-const title = `${site.name} — Software engineering & applied AI`;
-const image = new URL(site.portrait, site.url).href;
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: site.name,
-  url: site.url,
-  description: site.description,
-  image,
-  sameAs: site.socials.map((social) => social.href),
-};
+import { title, image, structuredData } from "../data/layout";
 ---
 
 <!doctype html>

@@ -3,6 +3,7 @@ import { analytics } from "../src/data/analytics";
 import {
   enableAnalytics,
   hasAnalyticsConsent,
+  readAnalyticsChoice,
   saveAnalyticsConsent,
 } from "../src/scripts/analytics";
 
@@ -11,7 +12,6 @@ beforeEach(() => {
   localStorage.clear();
   document.head.innerHTML = "";
   delete window.dataLayer;
-  delete window.gtag;
 });
 
 describe("analytics consent", () => {
@@ -22,15 +22,23 @@ describe("analytics consent", () => {
     expect(hasAnalyticsConsent()).toBe(false);
   });
 
+  it("remembers rejection without loading Tag Manager", () => {
+    expect(readAnalyticsChoice()).toBeNull();
+    expect(saveAnalyticsConsent(false)).toBe(true);
+    expect(readAnalyticsChoice()).toBe(false);
+    enableAnalytics();
+    expect(document.querySelector("script")).toBeNull();
+  });
+
   it("loads once after opt-in and remembers consent", () => {
     expect(saveAnalyticsConsent(true)).toBe(true);
     expect(hasAnalyticsConsent()).toBe(true);
     enableAnalytics();
     expect(document.querySelectorAll("#consented-analytics")).toHaveLength(1);
     expect(document.querySelector("script")?.src).toContain(
-      analytics.measurementId,
+      analytics.containerId,
     );
-    expect(window.dataLayer).toHaveLength(2);
+    expect(window.dataLayer).toHaveLength(1);
   });
 
   it("disables tracking and clears analytics cookies after withdrawal", () => {

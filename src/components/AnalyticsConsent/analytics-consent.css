@@ -1,0 +1,75 @@
+.cookie-preferences {
+  padding-block: 12px 24px;
+}
+
+.cookie-settings {
+  color: var(--color-muted);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.cookie-notice {
+  position: fixed;
+  z-index: 100;
+  inset: auto 16px 16px auto;
+  width: min(420px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: 20px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 12px 40px #0007;
+}
+
+.cookie-notice h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 650;
+}
+
+.cookie-notice p,
+.cookie-notice details {
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cookie-notice details {
+  margin-top: 8px;
+}
+
+.cookie-notice summary {
+  cursor: pointer;
+}
+
+.cookie-notice a {
+  text-decoration: underline;
+}
+
+.cookie-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.cookie-actions button {
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid var(--color-line);
+  border-radius: 5px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cookie-actions button:hover,
+.cookie-actions button:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
