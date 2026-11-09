@@ -6,7 +6,7 @@ import type { LeadershipEntry } from "../types/portfolio";
  * The reused event photos below demonstrate the composition, not these roles.
  */
 export const leadership: LeadershipEntry[] = [
- {
+  {
     id: "mmp-2026",
     title: "Bridging EU-MENA Leaders for Responsible AI & Policy Dialogue",
     organization: "Swedish Dialogue Institute for Middle East & North Africa",
@@ -39,7 +39,6 @@ export const leadership: LeadershipEntry[] = [
       },
     ],
   },
-  
 ];
 
 export const leadershipExamplesNote =
