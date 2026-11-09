@@ -44,7 +44,7 @@ describe("analytics consent", () => {
   it("disables tracking and clears analytics cookies after withdrawal", () => {
     saveAnalyticsConsent(true);
     document.cookie = "_ga=test; path=/";
-    document.cookie = "_ga_1QRTYJR377=test; path=/";
+    document.cookie = `_ga_${analytics.measurementId.slice(2)}=test; path=/`;
     saveAnalyticsConsent(false);
     expect(hasAnalyticsConsent()).toBe(false);
     expect(window[`ga-disable-${analytics.measurementId}`]).toBe(true);
