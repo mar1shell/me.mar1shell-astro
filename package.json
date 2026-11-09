@@ -12,7 +12,8 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "validate": "npm run check && npm run format:check && npm test && npm run build"
+    "validate": "npm run check && npm run format:check && npm test && npm run build && npm run check:build",
+    "check:build": "node scripts/check-build.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.1",
